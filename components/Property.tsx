@@ -6,12 +6,14 @@ import { BsGridFill } from 'react-icons/bs'
 import millify from "millify"
 import { GoVerified } from 'react-icons/go'
 import home1 from '../assets/home1.jpg'
+
 const Property = ({ property }: { property: any}) => {
+    console.log(property.coverPhoto)
   return (
     <Link href={`/property/${property.externalId}`} passHref>
         <Flex flexWrap='wrap' w='420px' p='5' paddingTop='0' justifyContent='flex-start' cursor='pointer'>
-            <Box>
-                <Image src={property.coverPhoto ? property.coverPhoto.url : home1} width={400} height={260} alt="default home"/>
+            <Box >
+                <Image src={property.coverPhoto.url} width={400} height={260} alt="default home"/>
             </Box>
             <Box w='full'>
                 <Flex paddingTop='2' alignItems='center' justifyContent='space-between'>
@@ -24,7 +26,7 @@ const Property = ({ property }: { property: any}) => {
                     </Box>
                 </Flex>
                 <Flex alignItems='center' p='1' justifyContent='space-between' w='250px' color='blue.400'>
-                    {property.rooms} <FaBed/> | {property.bath} <FaBath/> | {millify(property.area)} sqft <BsGridFill/>
+                    {property.rooms} <FaBed/> | &nbsp; {property.baths} <FaBath/> | &nbsp; {millify(property.area)} sqft <BsGridFill/>
                 </Flex>
                 <Text fontSize='lg'>
                     {
